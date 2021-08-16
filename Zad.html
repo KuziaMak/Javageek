@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 1.
+
+        //пример 1
+        /*
+        Создаем переменные где переменные a и b присваиваем 1, а c и d остовлем без заполнения
+        */
+        let a = 1, b = 1, c, d;
+        // сначала икрементом увеличиваем переменную a на один, а уже после записываем в c получившийся результат
+        c = ++a;
+        alert(c); // ответ: 2
+        //пример 2
+        // сначала записываем в переменную d результат b, а после икрементом увеличиваем переменную b на один       
+        d = b++;
+        alert(d); //ответ: 1
+        //пример 3
+        // сначала икрементом увеличиваем переменную a на один, а уже после записываем в c получившийся результат плюс 2 
+        c = 2 + ++a;
+        alert(c); //ответ: 5
+        //пример 4
+        // сначала записываем в переменную d результат b плюс 2, а после икрементом увеличиваем переменную b на один              
+        d = 2 + b++;
+        alert(d); //ответ: 4
+        alert(a); //3
+        alert(b); //3
+
+        // 2.
+        let a = 2;
+        // сначал переменная a удваивается, а после прибовляется к 1 и записывается в переменную x
+        let x = 1 + (a *= 2);
+        // x = 1 + (2*2) = 5  => a = 4
+
+        // 3. 
+
+        function choice(a, b) {
+            if (a >= 0 && b >= 0) {
+                return `${a} - ${b} = ${a - b}`
+            } else if (a < 0 && b < 0) {
+                return `${a} * ${b} = ${a * b}`
+            } else if (a >= 0 && b < 0) {
+                return `${a} + ${b} = ${a + b}`
+            } else if (a < 0 && b >= 0) {
+                return `${a} + ${b} = ${a + b}`
+            } else {
+                throw new Error("Как ты сюда попал?");
+            }
+        }
+        alert(choice(1, 2))
+        alert(choice(-3, -2))
+        alert(choice(1, -5))
+        alert(choice(-2, 2))
+
+        // 4.
+        /**
+         * @param {number} a
+         * @param {number} b
+         * @param {string} sign
+         * @returns {number}
+         */
+        let calculet = (a, b, sign) => eval(`${a} ${sign} ${b}`)
+
+        alert(calculet(3, 7, "+"))
+        alert(calculet(6, 3, "-"))
+        alert(calculet(2, 4, "*"))
+        alert(calculet(10, 5, "/"))
+
+        // 5.
+        function mathOperation(arg1, arg2, operation) {
+            switch (operation) {
+                case '+': return arg1 + arg2
+                case '-': return arg1 - arg2
+                case '*': return arg1 * arg2
+                case '/': return arg1 / arg2
+            }
+            return null
+        }
+        alert(mathOperation(10, 5, "+"))
+        alert(mathOperation(10, 5, "-"))
+        alert(mathOperation(10, 5, "*"))
+        alert(mathOperation(10, 5, "/"))
+    </script>
+</body>
+
+</html>

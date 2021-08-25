@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+
+<body>
+    <script>
+        // 1.
+        /**
+         * @param {Number} numb
+         * @returns {Object}
+         */
+        let numobj = (numb) => {
+            numb = Math.floor(numb)
+            if (Number.isInteger(numb) && numb >= 0 && numb < 1000) {
+                return { units: numb % 10, tens: parseInt(numb / 10) % 10, hundreds: parseInt(numb / 100) }
+
+            }
+            console.log('Не в диапазоне или не число');
+            return " "
+        }
+        console.log(numobj(56));
+        console.log(numobj("fssaf"));
+        console.log(numobj(57.9));
+        console.log(numobj(10000));
+        console.log(numobj(999.9));
+        console.log(numobj(1000));
+
+        // 1.1
+
+        function Product(name, price) {
+            this.name = name
+            this.price = price
+        }
+        Product.prototype.make25PercentDiscount = function () {
+            this.price *= 0.75
+        }
+        let prod = new Product("eda", 666)
+        console.log(prod.name, prod.price);
+        prod.make25PercentDiscount()
+        console.log(prod.name, prod.price);
+
+        class Product {
+            constructor(name, price) {
+                this.name = name
+                this.price = price
+            }
+            make25PercentDiscount() {
+                this.price *= 0.75
+            }
+        }
+
+        let prod = new Product("eda", 666)
+        console.log(prod.name, prod.price);
+        prod.make25PercentDiscount()
+        console.log(prod.name, prod.price);
+
+        // 1.2 
+
+        function Post(author, text, date) {
+            this.author = author
+            this.text = text
+            this.date = date
+        }
+        Post.prototype.edit = function (text) {
+            this.text = text
+        }
+
+        let post = new Post("avter", "fsaffa", "00/00/0000")
+        console.log(post.author, post.date, post.text);
+        post.edit("text")
+        console.log(post.author, post.date, post.text);
+
+        function AttachedPost(author, text, date) {
+            Post.call(this, author, text, date)
+            this.highlighted = false
+        }
+        AttachedPost.prototype = Object.create(Post.prototype)
+        AttachedPost.prototype.constructor = AttachedPost
+        AttachedPost.prototype.makeTextHighlighted = function () { this.highlighted = true }
+
+        let atta = new AttachedPost("ad", "adsf", "666/666/666")
+        console.log(atta.author, atta.date, atta.text, atta.highlighted);
+        atta.makeTextHighlighted();
+        atta.edit("text")
+        console.log(atta.author, atta.date, atta.text, atta.highlighted);
+
+
+
+        class Post {
+            constructor(author, text, date) {
+                this.author = author
+                this.text = text
+                this.date = date
+            }
+            edit(text) {
+                this.text = text
+            }
+        }
+        let post = new Post("avter", "fsaffa", "00/00/0000")
+        console.log(post.author, post.date, post.text);
+        post.edit("text")
+        console.log(post.author, post.date, post.text);
+
+
+        class AttachedPost extends Post {
+            constructor(author, text, date) {
+                super(author, text, date);
+                this.highlighted = false
+            }
+
+            makeTextHighlighted = function () { this.highlighted = true }
+        }
+
+        let atta = new AttachedPost("avter", "fsaffa", "00/00/0000")
+        console.log(atta.author, atta.date, atta.text, atta.highlighted);
+        atta.edit("text"); atta.makeTextHighlighted();
+        console.log(atta.author, atta.date, atta.text, atta.highlighted);
+
+    </script>
+</body>
+
+</html>

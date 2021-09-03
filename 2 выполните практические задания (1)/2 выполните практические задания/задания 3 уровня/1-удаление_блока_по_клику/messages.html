@@ -44,10 +44,12 @@
     -->
 
     <script>
-
+        let but = document.querySelectorAll("button")
+        but.forEach((button) => button.addEventListener("click", closeClickHandler))
         function closeClickHandler(event) {
-           
+            event.currentTarget.parentElement.style.display = "none"
         }
+
     </script>
 </body>
 

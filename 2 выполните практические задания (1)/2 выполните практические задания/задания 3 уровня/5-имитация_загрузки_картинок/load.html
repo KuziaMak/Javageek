@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="products">
         <div class="product">
@@ -41,7 +43,17 @@
     -->
 
     <script>
-        
+        setTimeout(funct, 3000)
+        function funct() {
+            let imag = document.querySelectorAll("img")
+            let number = 1
+            for (let ima of imag) {
+                ima.setAttribute("src", `images/${number++}.jpg`)
+
+            }
+        }
+
     </script>
 </body>
+
 </html>

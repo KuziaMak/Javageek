@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
     <style>
         i {
             font-size: 50px;
         }
+
         .golden {
             color: gold;
         }
     </style>
 </head>
+
 <body>
     <i id="first" class="fas fa-star"></i>
     <i id="second" class="fas fa-star"></i>
@@ -31,23 +36,46 @@
     -->
 
     <script>
-        let firstStar = document.getElementById('first');
-        let secondStar = document.getElementById('second');
-        let thirdStar = document.getElementById('third');
-        let fourthStar = document.getElementById('fourth');
-        let fifthStar = document.getElementById('fifth');
+        // let firstStar = document.getElementById('first');
+        // let secondStar = document.getElementById('second');
+        // let thirdStar = document.getElementById('third');
+        // let fourthStar = document.getElementById('fourth');
+        // let fifthStar = document.getElementById('fifth');
 
+        // let goldenClass = 'golden';
+
+        // firstStar.addEventListener('mouseover', function () {
+        //     if (!firstStar.classList.contains('goldenClass')) {
+        //         firstStar.classList.add(goldenClass);
+        //     }
+        // });
+
+        // firstStar.addEventListener('mouseout', function () {
+        //     firstStar.classList.remove(goldenClass);
+        // });
+        let stars = document.querySelectorAll("i")
         let goldenClass = 'golden';
 
-        firstStar.addEventListener('mouseover', function() {
-            if (!firstStar.classList.contains('goldenClass')) {
-                firstStar.classList.add(goldenClass);
-            }
-        });
+        stars.forEach((el) => {
+            el.addEventListener("mouseover", (event) => {
+                event = event.path[0]
+                while (event) {
+                    event.classList.toggle(goldenClass)
+                    event = event.previousElementSibling
 
-        firstStar.addEventListener('mouseout', function() {
-            firstStar.classList.remove(goldenClass);
-        });
+                }
+            })
+            el.addEventListener("mouseout", (event) => {
+                event = event.path[0]
+                while (event) {
+                    event.classList.toggle(goldenClass)
+                    event = event.previousElementSibling
+
+                }
+
+            })
+        })
     </script>
 </body>
+
 </html>

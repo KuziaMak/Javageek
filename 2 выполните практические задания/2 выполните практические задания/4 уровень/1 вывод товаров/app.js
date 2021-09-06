@@ -75,6 +75,9 @@ const products = {
     ],
 };
 
+let product = document.querySelector(".products")
+let button = document.querySelectorAll("button")
+button.forEach((eve) => eve.addEventListener("click", function () { clickHandler(eve) }))
 
 /**
  * Эта функция должна вызываться при клике по кнопкам.
@@ -82,10 +85,10 @@ const products = {
  */
 function clickHandler(event) {
     //вам нужно очищать содержимое .products
-    
+    product.innerHTML = ""
     //в showCategory надо передать строку с типом категории, тип берите
     //из атрибута data-type у кнопки, по которой кликнули.
-    
+    showCategory(event.dataset.type)
 }
 
 /**
@@ -96,7 +99,8 @@ function clickHandler(event) {
  * по которой кликнули.
  */
 function showCategory(category) {
-    
+    for (let elem of products[category])
+        product.innerHTML += getProductMarkup(elem)
 }
 
 /**
@@ -109,5 +113,12 @@ function showCategory(category) {
  * в верху этого файла.
  */
 function getProductMarkup(product) {
-
+    let str =
+        `<div class="product">
+    <div>${product.name}</div>
+    <img src="${product.imageUrl}" alt="">
+    <div>${product.price}</div>
+    <a href="https://example.com/producs/${product.id}">Подробнее</a>
+</div>`
+    return str
 }

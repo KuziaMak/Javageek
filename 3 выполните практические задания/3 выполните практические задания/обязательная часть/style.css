@@ -36,9 +36,11 @@ body {
 }
 
 .userIcon,
-.cartIcon {
+.cartIcon,
+.displayN {
     display: none;
 }
+
 
 @media (min-width: 768px) {
     .userIcon,
